@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://7ywvdkfnb6t3"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_cgorw"]
+[ext_resource type="PackedScene" uid="uid://bh5xpd7j37r62" path="res://Scenes/Hitbox/Hitbox.tscn" id="2_0wntb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkgj"]
+size = Vector2(40, 142)
+
+[node name="Sword" type="Node2D" unique_id=2017729571]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1582383799]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(-0.31714287, 1.11)
+texture = ExtResource("1_cgorw")
+
+[node name="Hitbox" parent="." unique_id=133573844 instance=ExtResource("2_0wntb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=39312716]
+shape = SubResource("RectangleShape2D_mjkgj")

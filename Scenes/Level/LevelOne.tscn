@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c53prar4364w3"]
+
+[ext_resource type="Script" uid="uid://dsvcpuxa331jx" path="res://Scenes/Level/Level.gd" id="1_1r7e8"]
+[ext_resource type="PackedScene" uid="uid://d1w5ccem33kle" path="res://Scenes/Player/Player.tscn" id="1_8cw1b"]
+[ext_resource type="PackedScene" uid="uid://bjldxqrboa2gl" path="res://Scenes/Hud/Hud.tscn" id="3_7ulfj"]
+
+[sub_resource type="Gradient" id="Gradient_ei2uk"]
+colors = PackedColorArray(0, 0.1882353, 0, 1, 0, 0.5921569, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y0r0m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mjkgj"]
+noise = SubResource("FastNoiseLite_y0r0m")
+color_ramp = SubResource("Gradient_ei2uk")
+
+[node name="LevelOne" type="Node2D" unique_id=6133163]
+script = ExtResource("1_1r7e8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803082289]
+position = Vector2(1787.502, 2973.5005)
+scale = Vector2(98.56445, 56.951168)
+texture = SubResource("NoiseTexture2D_mjkgj")
+
+[node name="Player" parent="." unique_id=2065601692 instance=ExtResource("1_8cw1b")]
+position = Vector2(572, 344)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=779416104]
+
+[node name="HUD" parent="CanvasLayer" unique_id=1395813379 instance=ExtResource("3_7ulfj")]
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1381532133]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="spawnEnemy"]
